@@ -58,13 +58,13 @@ export default function Work({ projects }) {
                         </div>
                         <div className={styles.details}> <h1 className="-primary"> {project.fields.title} </h1>
                             <div className={styles.links}>
-                                <a href={project.fields.codeLink} target="_blank" >
+                                <a href={project.fields.codeLink} target="_blank" rel="noopener noreferrer" >
                                     <div className={styles.link}>
                                         <Image src={code} width={30} height={30} alt="code" ></Image>
                                         <p>Code</p>
                                     </div>
                                 </a>
-                                <a href={project.fields.demoLink} target="_blank" >
+                                <a href={project.fields.demoLink} target="_blank" rel="noopener noreferrer" >
                                     <div className={styles.link}>
                                         <Image src={demo} width={25} height={25} alt="demo" ></Image>
                                         <p>Demo</p>
