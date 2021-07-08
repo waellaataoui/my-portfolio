@@ -9,8 +9,8 @@ import code from "../public/code.svg"
 import demo from "../public/demow.png"
 export async function getStaticProps() {
     const client = createClient({
-        space: 'xqeg1avybang',
-        accessToken: 'lkFMUSdrqoovWffHUjEH4aJD2V99nynNHWBZjPIdwmQ'
+        space: process.env.CONTENTFUL_SPACE,
+        accessToken: process.env.CONTENTFUL_TOKEN
     })
     const response = await client.getEntries({ content_type: 'project' })
 
@@ -44,7 +44,6 @@ export default function Work({ projects }) {
         <div className="container">
             <Head>
                 <title>Wael Laataoui |Work</title>
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <section className="section">

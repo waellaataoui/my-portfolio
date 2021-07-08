@@ -31,7 +31,6 @@ export default function Contact() {
             <div className={`${styles.bottom} container`} >
                 <Head>
                     <title>Wael Laataoui |Contact</title>
-                    <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <section className="section">
                     <ProgressBar></ProgressBar>
