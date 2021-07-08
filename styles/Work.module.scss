@@ -1,0 +1,46 @@
+.project {
+  display: flex;
+  align-items: center;
+  .projectImage {
+    @media (max-width: 750px) {
+      width: 50%;
+    }
+  }
+  .details {
+    width: 70%;
+  }
+  a {
+    display: inline-block;
+    padding: 0 10px;
+  }
+  p {
+    padding: 0;
+  }
+  .links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      filter: invert(31%) sepia(91%) saturate(7451%) hue-rotate(259deg)
+        brightness(93%) contrast(97%);
+    }
+    p {
+      padding-left: 10px;
+    }
+  }
+  @media (max-width: 750px) {
+    flex-direction: column;
+    padding: 20px 0;
+    .details {
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+    }
+  }
+}

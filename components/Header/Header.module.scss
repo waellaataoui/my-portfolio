@@ -1,0 +1,93 @@
+.nav {
+  background: var(--bg);
+  color: var(--light);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: hidden;
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-shadow: -1px 29px 5px 0px rgba(14, 18, 18, 0.4);
+
+  z-index: 1;
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.4s ease-out;
+    line-height: 1;
+    padding: 0 5px;
+    &.active {
+      color: var(--gray);
+    }
+    &:hover {
+      color: var(--purple);
+    }
+  }
+  svg {
+    width: 20px;
+    fill: var(--purple);
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      fill: var(--light);
+    }
+  }
+  ul {
+    align-items: center;
+    display: flex;
+
+    @media (max-width: 750px) {
+      height: 100vh;
+      transition: all 0.2s ease-in-out;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+      font-size: 2rem;
+      position: fixed;
+      top: 0;
+      right: 100%;
+      &.open {
+        right: 5%;
+        left: 30%;
+        a {
+          opacity: 1;
+        }
+      }
+      a {
+        margin-bottom: 30px;
+        font-weight: 700;
+        opacity: 0;
+        transition: opacity 500ms ease-in;
+
+        @for $i from 1 through 5 {
+          &:nth-child(#{$i}) {
+            transition-duration: 500ms * $i;
+          }
+        }
+        svg {
+          width: 40px;
+          display: inline;
+        }
+      }
+    }
+  }
+  @media (max-width: 750px) {
+    align-items: flex-start;
+  }
+}
+
+.hamburger {
+  display: none;
+  @media (max-width: 750px) {
+    display: block;
+    position: fixed;
+    top: 3%;
+    left: 90%;
+  }
+}
+#logo {
+  font-size: 1.2rem;
+  color: var(--purple);
+  font-weight: 700;
+}

@@ -1,0 +1,111 @@
+.links {
+  padding: 20px 0;
+  a {
+    padding: 0 5px;
+    &:hover {
+      filter: none;
+    }
+  }
+  svg {
+    width: 25px;
+    fill: var(--purple);
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      fill: var(--light);
+    }
+  }
+  #btn {
+    display: inline-flex;
+    align-items: center;
+    height: 2rem;
+    padding: 0px 20px;
+    background-color: var(--purple);
+    border-radius: 3rem;
+    color: black;
+    transition: all 0.4s ease-in-out;
+
+    svg {
+      margin-left: 0.5rem;
+      height: 14px;
+      width: 14px;
+      stroke: black;
+      fill: var(--purple);
+      stroke-width: 2px;
+    }
+    &:hover {
+      background-color: var(--light);
+    }
+  }
+  #lineBreak {
+    display: none;
+    @media (max-width: 750px) {
+      display: block;
+    }
+  }
+}
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  input,
+  textarea {
+    font-size: 1rem;
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    background-color: transparent;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--purple);
+  }
+  button {
+    font-family: "Roboto Mono", monospace;
+    padding: 15px 20px;
+    background-color: var(--purple);
+    border: none;
+    width: 20%;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      background-color: var(--light);
+    }
+    @media (max-width: 750px) {
+      width: 40%;
+    }
+  }
+}
+.backgroundWrapper {
+  &::before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 12%;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background-image: linear-gradient(
+        270deg,
+        var(--bg),
+        rgba(var(--bg-rgb), 0) 90%
+      ),
+      linear-gradient(180deg, var(--bg), rgba(var(--bg-rgb), 0) 60%),
+      url("../public/me.jpg");
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-size: cover;
+    @media (max-width: 750px) {
+      width: 100%;
+      position: absolute;
+      height: 80vh;
+      background-image: linear-gradient(
+          270deg,
+          var(--bg),
+          rgba(var(--bg-rgb), 0) 50%
+        ),
+        linear-gradient(0deg, var(--bg), rgba(var(--bg-rgb), 0) 60%),
+        url("../public/me.jpg");
+    }
+  }
+}
+.bottom {
+  @media (max-width: 750px) {
+    margin-top: 80%;
+  }
+}

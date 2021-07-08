@@ -1,0 +1,178 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+  background: var(--bg);
+  color: var(--light);
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* @vars */
+:root {
+  --purple: #682ae9;
+  --light: #dbdbdb;
+  --header-link: #dbdbdb;
+  --header-link-hover: #682ae9;
+  --header-link-hover-icon: #dbdbdb;
+  --header-link-active: rgba(85, 85, 85, 1);
+  --std-color: #dbdbdb;
+  --bg: #0e1212;
+  --bg-rgb: 14, 18, 18;
+  --gray: #808080;
+}
+
+.-primary {
+  color: var(--purple);
+}
+.-gray {
+  color: var(--gray);
+}
+.container {
+  position: relative;
+  height: 100%;
+  text-align: left;
+  margin: 150px 10% 50px 25%;
+  transition: opacity 0.5s linear;
+  @media (max-width: 750px) {
+    padding-left: 10px;
+    margin: 50% 25px 20px 10%;
+  }
+}
+.section {
+  min-height: 50vh;
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+  }
+  p {
+    font-size: 1.2rem;
+    padding: 10px 0;
+  }
+  @media (max-width: 750px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+  p {
+    font-size: 1rem;
+  }
+  a {
+    text-decoration: none;
+    color: unset;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      filter: brightness(1.4);
+    }
+  }
+}
+#progress {
+  height: 100%;
+  background: var(--purple)
+    linear-gradient(0deg, var(--bg) 1rem, rgba(var(--bg-rgb), 0) 20vh);
+  width: 1px;
+  position: absolute;
+  left: -3%;
+  top: 2%;
+  .circle {
+    transition: all 0.2s ease-in-out;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    left: -4px;
+    top: -7px;
+  }
+  .pulse {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--purple);
+    position: absolute;
+    left: -4px;
+    top: -7px;
+  }
+  @media (max-width: 750px) {
+    top: 3%;
+  }
+}
+.gap {
+  height: 15vh;
+  @media (max-width: 750px) {
+    height: 0;
+  }
+}
+.locked {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: url("/grass_battle_background.png") no-repeat;
+  background-size: cover;
+}
+.transparent {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.shake {
+  animation: shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1;
+}
+//tooltip
+.tooltip {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+}
+
+.tooltip .left {
+  min-width: 200px;
+  top: 50%;
+  right: 100%;
+  margin-right: 20px;
+  transform: translate(0, -50%);
+  padding: 10px 20px;
+  color: #ffffff;
+  background-color: #000000;
+  font-weight: normal;
+  font-size: 13px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 99999999;
+  box-sizing: border-box;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+
+.tooltip:hover .left {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip .left i {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -12px;
+  width: 12px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.tooltip .left i::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  background-color: #000000;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
