@@ -43,7 +43,8 @@ export default function Work({ projects }) {
     return (
         <div className="container">
             <Head>
-                <title>Wael Laataoui |Work</title>
+                <title>Wael Laataoui | Work</title>
+                <meta name="description" content="My projects" />
             </Head>
 
             <section className="section">

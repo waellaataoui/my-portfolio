@@ -45,6 +45,9 @@ body {
 }
 .section {
   min-height: 50vh;
+  perspective: 900px;
+  perspective-origin: 50% 50vh;
+
   h1 {
     font-size: 3.5rem;
     font-weight: 700;

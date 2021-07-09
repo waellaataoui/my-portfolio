@@ -51,7 +51,7 @@ const Header = () => {
 
                 </a>
             </ul>
-            <img onClick={toggleNav} className={styles.hamburger} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAKklEQVRIiWNgGOqA8f////9paQETLQ0fBaNgiIDRjDYKRgEdwGhGG3gAAPmPC/5Ei27iAAAAAElFTkSuQmCC" />
+            <img onClick={toggleNav} className={styles.hamburger} alt="menu" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAKklEQVRIiWNgGOqA8f////9paQETLQ0fBaNgiIDRjDYKRgEdwGhGG3gAAPmPC/5Ei27iAAAAAElFTkSuQmCC" />
 
         </div>
     )

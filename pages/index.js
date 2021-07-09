@@ -88,6 +88,7 @@ export default function Home() {
     throwBall.to(scrollRef.current, {
       autoAlpha: 1,
       transform: "translate3d(-50%, -50%, 0px)",
+      duration: 0.5
     })
 
 
@@ -97,7 +98,7 @@ export default function Home() {
 
     timeline.from("#title", {
       autoAlpha: 0,
-      rotationX: 100,
+      rotationX: 90,
       transformOrigin: '50% 50% -100px',
       duration: 2,
       ease: Power3.easeOut,
@@ -112,7 +113,7 @@ export default function Home() {
       })
     education.from("#education > h1", {
       autoAlpha: 0,
-      rotationX: 100,
+      rotationX: 90,
       transformOrigin: '50% 50% -300px',
       ease: Power3.easeInOut,
       scrollTrigger: {
@@ -136,10 +137,9 @@ export default function Home() {
       })
       .from("#prepa >h1", {
         autoAlpha: 0,
-        rotationX: 100,
-        transformOrigin: '50% 50% -400px',
+        rotationX: 90,
+        transformOrigin: '50% 50% -300px',
         ease: Power3.easeInOut,
-        duration: 3,
         scrollTrigger: {
           trigger: '#prepa >h1',
           start: "center center",
@@ -149,10 +149,9 @@ export default function Home() {
       })
       .from("#prepa > p", {
         autoAlpha: 0,
-        rotationX: 100,
+        rotationX: 90,
         transformOrigin: '50% 50% 200px',
         ease: Power3.easeInOut,
-        duration: 3,
         scrollTrigger: {
           trigger: '#prepa >.gap',
           scrub: true,
@@ -161,10 +160,9 @@ export default function Home() {
       })
       .from("#degree >h1", {
         autoAlpha: 0,
-        rotationX: 100,
+        rotationX: 90,
         transformOrigin: '50% 50% -400px',
         ease: Power3.easeInOut,
-        duration: 3,
         scrollTrigger: {
           trigger: '#degree > h1',
           start: "center center",
@@ -174,10 +172,10 @@ export default function Home() {
       })
       .from("#degree > p", {
         autoAlpha: 0,
-        rotationX: 100,
+        rotationX: 90,
         transformOrigin: '50% 50% 200px',
         ease: Power3.easeInOut,
-        duration: 3,
+        // duration: 3,
         scrollTrigger: {
           trigger: '#degree >.gap',
           scrub: true,
@@ -186,7 +184,7 @@ export default function Home() {
       })
     skills.from("#skillsHeader", {
       autoAlpha: 0,
-      rotationX: 100,
+      rotationX: 90,
       transformOrigin: '50% 50% -150px',
       ease: Power3.easeInOut,
       scrollTrigger: {
@@ -200,23 +198,22 @@ export default function Home() {
     })
     skills.from('.skillF', {
       opacity: 0,
-      x: '-100%',
+      x: '-80%',
       stagger: 1.5,
       scrollTrigger: {
         trigger: '#frontend',
         start: 'center center',
-        end: '+=180px',
+        end: '+=160px',
         scrub: true,
         toggleActions: "play, reverse, play,reverse",
       }
     })
     skills.from('.skillB', {
       opacity: 0,
-      x: '100%',
+      x: '80%',
       stagger: 1.5,
       scrollTrigger: {
         trigger: '#frontend',
-        // markers: true,
         start: 'bottom center',
         end: '+=100px',
         scrub: true,
@@ -299,14 +296,18 @@ export default function Home() {
         scrollTrigger: {
           trigger: pokemonRef.current,
           start: 'center center',
-          end: '51% center',
           onEnter: () => {
             if (!pikatchuCaught) {
               //this test fixes a weird refs behaviour
               if (document.getElementById(styles.pokemon)) {
                 document.getElementById(styles.pokemon).scrollIntoView();
-                document.body.classList.add('locked')
-                document.getElementById('header').classList.add('transparent')
+                //wait a while to avoid glitches 
+                setTimeout(() => {
+                  document.getElementById(styles.pokemon).scrollIntoView();
+                  document.body.classList.add('locked')
+                  document.getElementById('header').classList.add('transparent')
+                }, 300);
+
               }
 
             }
@@ -320,7 +321,13 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Wael Laataoui |Portfolio</title>
+        <title>Wael Laataoui | Portfolio</title>
+        <meta name="description" content="My personal portfolio" />
+        <meta property="og:title" content="Wael Laataoui's Portfolio" />
+        <meta property="og:description" content="My personal portfolio" />
+        <meta property="og:url" content="https://www.waellaataoui.tn/" />
+        <meta property="og:type" content="website" />
+
       </Head>
       <ProgressBar></ProgressBar>
       <section id="intro" className="section">
@@ -423,7 +430,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* <div className="gap"></div> */}
       <section className="section">
         <h1>Check out my <br></br> <span className="-primary"><Link href="/work">selected works</Link> </span>
  for more details.</h1>
