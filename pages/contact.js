@@ -10,6 +10,9 @@ export default function Contact() {
         delay: 0.2
     })
     useEffect(() => {
+        //if forced route change during pokemon scene
+        document.body.classList.remove('locked')
+
         timeline.from("#title", {
             autoAlpha: 0,
             rotationX: 100,
