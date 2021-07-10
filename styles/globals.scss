@@ -57,6 +57,8 @@ body {
     padding: 10px 0;
   }
   @media (max-width: 750px) {
+    perspective: 1550px;
+    perspective-origin: 50% 50vh;
     h1 {
       font-size: 2rem;
     }

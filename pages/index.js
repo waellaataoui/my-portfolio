@@ -95,7 +95,7 @@ export default function Home() {
     throwBall.play()
   }
   useEffect(() => {
-
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     timeline.from("#title", {
       autoAlpha: 0,
       rotationX: 90,
