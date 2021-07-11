@@ -44,6 +44,7 @@ export default function Home() {
   const gotchaRef = useRef(null)
   const scrollRef = useRef(null)
   const skillsRef = useRef(null)
+  const hiddenSection = useRef(null)
   let pikatchuCaught = false
   const catchEm = () => {
     const throwBall = gsap.timeline();
@@ -80,15 +81,57 @@ export default function Home() {
         //so that the screen wont get locked again
         pikatchuCaught = true
         document.body.classList.remove('locked')
+        //display the rest of the page 
+        hiddenSection.current.classList.remove(styles.hidden)
         //restore header
         document.getElementById('header').classList.remove('transparent')
+        //add timeline for the hidden section
+        //(used this approach to avoid glitches when scrolling too fast)
+        skills.from("#skillsHeader", {
+          autoAlpha: 0,
+          rotationX: 90,
+          transformOrigin: '50% 50% -150px',
+          ease: Power3.easeInOut,
+          scrollTrigger: {
+            trigger: skillsRef.current,
+            start: "top center",
+            end: "+=200px",
+            scrub: true,
+            toggleActions: "play, reverse, play,reverse",
+
+          }
+        })
+        skills.from('.skillF', {
+          opacity: 0,
+          x: '-80%',
+          stagger: 1.5,
+          scrollTrigger: {
+            trigger: '#frontend',
+            start: 'center center',
+            end: '+=160px',
+            scrub: true,
+            toggleActions: "play, reverse, play,reverse",
+          }
+        })
+        skills.from('.skillB', {
+          opacity: 0,
+          x: '80%',
+          stagger: 1.5,
+          scrollTrigger: {
+            trigger: '#frontend',
+            start: 'bottom center',
+            end: '+=100px',
+            scrub: true,
+            toggleActions: "play, reverse, play,reverse",
+          }
+        })
 
       }
     })
     throwBall.to(scrollRef.current, {
       autoAlpha: 1,
       transform: "translate3d(-50%, -50%, 0px)",
-      duration: 0.5
+      duration: 1
     })
 
 
@@ -182,46 +225,6 @@ export default function Home() {
           toggleActions: "play, reverse, play,reverse",
         }
       })
-    skills.from("#skillsHeader", {
-      autoAlpha: 0,
-      rotationX: 90,
-      transformOrigin: '50% 50% -150px',
-      ease: Power3.easeInOut,
-      scrollTrigger: {
-        trigger: skillsRef.current,
-        start: "top center",
-        end: "+=200px",
-        scrub: true,
-        toggleActions: "play, reverse, play,reverse",
-
-      }
-    })
-    skills.from('.skillF', {
-      opacity: 0,
-      x: '-80%',
-      stagger: 1.5,
-      scrollTrigger: {
-        trigger: '#frontend',
-        start: 'center center',
-        end: '+=160px',
-        scrub: true,
-        toggleActions: "play, reverse, play,reverse",
-      }
-    })
-    skills.from('.skillB', {
-      opacity: 0,
-      x: '80%',
-      stagger: 1.5,
-      scrollTrigger: {
-        trigger: '#frontend',
-        start: 'bottom center',
-        end: '+=100px',
-        scrub: true,
-        toggleActions: "play, reverse, play,reverse",
-      }
-    })
-
-
     //pokemon scene  
     pokemon
       .from(pikatchuRef.current, {
@@ -229,7 +232,7 @@ export default function Home() {
         filter: 'brightness(0.2)',
         scrollTrigger: {
           trigger: pokemonRef.current,
-          start: '20% center',
+          start: '10% center',
           end: 'center center',
           scrub: true,
           toggleActions: "play, reverse, play,reverse",
@@ -239,7 +242,7 @@ export default function Home() {
         transform: "translate3d(-150vw, 0px, 0px)",
         scrollTrigger: {
           trigger: pokemonRef.current,
-          start: '20% center',
+          start: '10% center',
           end: 'center center',
           scrub: true,
           toggleActions: "play, reverse, play,reverse",
@@ -274,18 +277,18 @@ export default function Home() {
         scrollTrigger: {
           trigger: pokemonRef.current,
           ease: Power3.easeIn,
-          start: '20% center',
+          start: '10% center',
           end: 'center center',
           scrub: 4,
           toggleActions: "restart, reverse, play,reverse",
         }
       })
       .from(pokeballRef.current, {
-        y: '-100vw',
+        y: '-100vh',
         scrollTrigger: {
           trigger: pokemonRef.current,
           ease: Power3.easeIn,
-          start: '20% center',
+          start: '10% center',
           end: 'center center',
           scrub: 3,
           toggleActions: "restart, reverse, play,reverse",
@@ -301,7 +304,6 @@ export default function Home() {
               //this test fixes a weird refs behaviour
               if (document.getElementById(styles.pokemon)) {
                 document.getElementById(styles.pokemon).scrollIntoView();
-                //wait a while to avoid glitches 
                 setTimeout(() => {
                   document.getElementById(styles.pokemon).scrollIntoView();
                   document.body.classList.add('locked')
@@ -389,51 +391,54 @@ export default function Home() {
 
         </div>
       </section>
+      <div className={styles.hidden} ref={hiddenSection}>
 
-      <section ref={skillsRef} id={styles.skills} className="section">
-        <div className="gap"></div>
-        <h1 id="skillsHeader" className="-primary">Skills</h1>
-        <div id="frontend" className={styles.skillsWrapper} >
-          <div className="skillF"> <Image src={reactLogo} layout="responsive" alt="react" ></Image>
-            <p>react js</p>
-          </div>
-          <div className="skillF"> <Image src={reduxLogo} layout="responsive" alt="redux" ></Image>
-            <p>redux</p>
+        <section ref={skillsRef} id={styles.skills} className="section">
+          <div className="gap"></div>
+          <h1 id="skillsHeader" className="-primary">Skills</h1>
+          <div id="frontend" className={styles.skillsWrapper} >
+            <div className="skillF"> <Image src={reactLogo} layout="responsive" alt="react" ></Image>
+              <p>react js</p>
+            </div>
+            <div className="skillF"> <Image src={reduxLogo} layout="responsive" alt="redux" ></Image>
+              <p>redux</p>
 
-          </div>
-          <div className="skillF" > <Image src={nextLogo} layout="responsive" alt="nextjs" ></Image>
-            <p>Next js</p>
+            </div>
+            <div className="skillF" > <Image src={nextLogo} layout="responsive" alt="nextjs" ></Image>
+              <p>Next js</p>
 
-          </div>
-          <div className="skillF"> <Image src={sassLogo} layout="responsive" alt="sass" ></Image>
-            <p>Sass</p>
+            </div>
+            <div className="skillF"> <Image src={sassLogo} layout="responsive" alt="sass" ></Image>
+              <p>Sass</p>
 
+            </div>
           </div>
-        </div>
-        <div className="gap"></div>
+          <div className="gap"></div>
 
-        <div id="backend" className={styles.skillsWrapper} >
-          <div className="skillB"> <Image src={expressLogo} layout="responsive" alt="express" ></Image>
-            <p>Express js</p>
-          </div>
-          <div className="skillB"> <Image src={mongodbLogo} layout="responsive" alt="mongodb" ></Image>
-            <p>MongoDB</p>
+          <div id="backend" className={styles.skillsWrapper} >
+            <div className="skillB"> <Image src={expressLogo} layout="responsive" alt="express" ></Image>
+              <p>Express js</p>
+            </div>
+            <div className="skillB"> <Image src={mongodbLogo} layout="responsive" alt="mongodb" ></Image>
+              <p>MongoDB</p>
 
-          </div>
-          <div className="skillB" > <Image src={postgresLogo} layout="responsive" alt="postgres" ></Image>
-            <p>PostgreSQL</p>
+            </div>
+            <div className="skillB" > <Image src={postgresLogo} layout="responsive" alt="postgres" ></Image>
+              <p>PostgreSQL</p>
 
-          </div>
-          <div className="skillB"> <Image src={symfonyLogo} layout="responsive" alt="symfony" ></Image>
-            <p>Symfony</p>
+            </div>
+            <div className="skillB"> <Image src={symfonyLogo} layout="responsive" alt="symfony" ></Image>
+              <p>Symfony</p>
 
+            </div>
           </div>
-        </div>
-      </section>
-      <section className="section">
-        <h1>Check out my <br></br> <span className="-primary"><Link href="/work">selected works</Link> </span>
+        </section>
+        <section className="section">
+          <h1>Check out my <br></br> <span className="-primary"><Link href="/work">selected works</Link> </span>
  for more details.</h1>
-      </section>
+        </section>
+      </div>
+
     </div>
   )
 }

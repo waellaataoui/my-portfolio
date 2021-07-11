@@ -15,7 +15,8 @@ const Header = () => {
         if (route.trim() !== "") setName(route)
         else setName("me")
         Array.from(document.querySelectorAll("a")).forEach(link => {
-            if (link.getAttribute("href").trim() == router.asPath) link.classList.add(styles.active)
+            if (link.getAttribute("href").trim() == router.asPath)
+                link.classList.add(styles.active);
             else link.classList.remove(styles.active)
         })
     }, [router.asPath])

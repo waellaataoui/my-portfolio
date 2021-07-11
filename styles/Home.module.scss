@@ -120,7 +120,7 @@
 }
 #skills {
   padding-top: 50px;
-  padding-bottom: 200px;
+  padding-bottom: 150px;
   h1 {
     padding-bottom: 25px;
   }
@@ -139,11 +139,16 @@
     }
     @media (max-width: 750px) {
       overflow: hidden;
-
       padding: 10px 0;
       div {
         margin: 23px 10px;
       }
     }
   }
+  @media (max-width: 750px) {
+    padding-bottom: 50px;
+  }
+}
+.hidden {
+  display: none;
 }

@@ -20,6 +20,7 @@
     padding: 0 5px;
     &.active {
       color: var(--gray);
+      pointer-events: none;
     }
     &:hover {
       color: var(--purple);
@@ -49,7 +50,7 @@
       right: 100%;
       &.open {
         right: 5%;
-        left: 30%;
+        // left: 30%;
         a {
           opacity: 1;
         }
